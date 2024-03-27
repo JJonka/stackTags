@@ -5,20 +5,26 @@ import { ReactSVG } from "react-svg";
 
 interface IProps {
   children: string | (string & JSX.Element);
+  fontColor: string;
+  bgrColor: string;
+  iconSrc: string;
 }
 
-const Header = ({ children }: IProps) => {
+const Header = ({ children, fontColor, bgrColor, iconSrc }: IProps) => {
   return (
     <Box
-      sx={{ display: "flex", position: "sticky", backgroundColor: "#2196f3" }}
+      sx={{ display: "flex", position: "sticky", backgroundColor: bgrColor }}
     >
       <Typography
         variant="h5"
-        color="white"
+        color={fontColor}
         component="div"
         className={styles.typography}
       >
-        <ReactSVG src="/assets/logo.svg" className={styles.logo}></ReactSVG>
+        <ReactSVG
+          src={iconSrc}
+          className={styles[`logo-${fontColor}`]}
+        ></ReactSVG>
         {children}
       </Typography>
     </Box>

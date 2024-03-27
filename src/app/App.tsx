@@ -7,7 +7,13 @@ function App() {
 
   return (
     <>
-      <Header>STACKOVERFLOW'S TAGS LIST</Header>
+      <Header
+        fontColor="white"
+        bgrColor="dodgerblue"
+        iconSrc="/assets/logo.svg"
+      >
+        STACKOVERFLOW'S TAGS LIST
+      </Header>
     </>
   );
 }
