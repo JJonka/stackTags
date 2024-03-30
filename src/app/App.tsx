@@ -1,21 +1,13 @@
-import { useState } from "react";
 import Header from "../components/header/Header";
-import styles from "./App.module.scss";
+import TagsContainer from "../components/tagsContainer/TagsContainer";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <Header
-        fontColor="white"
-        bgrColor="dodgerblue"
-        iconSrc="/assets/logo.svg"
-      >
-        STACKOVERFLOW'S TAGS LIST
-      </Header>
-    </>
-  );
-}
+const App = () => (
+  <>
+    <Header fontColor="white" bgrColor="dodgerblue" iconSrc="/assets/logo.svg">
+      STACKOVERFLOW'S TAGS LIST
+    </Header>
+    <TagsContainer></TagsContainer>
+  </>
+);
 
 export default App;
