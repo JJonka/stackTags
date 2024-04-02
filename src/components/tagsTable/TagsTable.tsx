@@ -11,6 +11,8 @@ import { useAppDispatch, useTypedSelector } from "../../app/stateStore";
 import { getTags } from "./TableStateSlice";
 import { useEffect, useState } from "react";
 import TablePagination from "@mui/material/TablePagination";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Alert, Box } from "@mui/material";
 
 interface ITag {
   count: number;
@@ -27,6 +29,8 @@ const TagsTable = () => {
   const dispatch = useAppDispatch();
 
   const data: ITag[] = useTypedSelector((state) => state.getTags.currentArray);
+  const loading: boolean = useTypedSelector((state) => state.getTags.loading);
+  const error: string | null = useTypedSelector((state) => state.getTags.error);
 
   const getTotalCount = async () => {
     const response = await fetch(
@@ -53,7 +57,6 @@ const TagsTable = () => {
         order: orderDirection,
       })
     );
-    console.log(newPage);
     setPage(newPage);
   };
 
@@ -86,7 +89,7 @@ const TagsTable = () => {
   };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ width: 800 }}>
       <TablePagination
         component="div"
         count={total ?? 100}
@@ -95,44 +98,68 @@ const TagsTable = () => {
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <Table sx={{ maxWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <TableSortLabel
-                active={orderBy === "name"}
-                direction={orderBy === "name" ? orderDirection : "asc"}
-                onClick={() => sortHandler("name")}
-              >
-                TAG NAME
-              </TableSortLabel>
-            </TableCell>
-            <TableCell align="left">
-              <TableSortLabel
-                active={orderBy === "popular"}
-                direction={orderBy === "popular" ? orderDirection : "asc"}
-                onClick={() => sortHandler("popular")}
-              >
-                COUNT
-              </TableSortLabel>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data &&
-            data.map((element) => (
-              <TableRow
-                key={element.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {element.name}
-                </TableCell>
-                <TableCell align="left">{element.count}</TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "10px",
+        }}
+      >
+        {error == null ? (
+          loading ? (
+            <CircularProgress />
+          ) : (
+            <Table sx={{ maxWidth: 1000 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ width: "400px" }}>
+                    <TableSortLabel
+                      active={orderBy === "name"}
+                      direction={orderBy === "name" ? orderDirection : "asc"}
+                      onClick={() => sortHandler("name")}
+                    >
+                      TAG NAME
+                    </TableSortLabel>
+                  </TableCell>
+                  <TableCell align="left" sx={{ width: "400px" }}>
+                    <TableSortLabel
+                      active={orderBy === "popular"}
+                      direction={orderBy === "popular" ? orderDirection : "asc"}
+                      onClick={() => sortHandler("popular")}
+                    >
+                      COUNT
+                    </TableSortLabel>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data &&
+                  data.map((element) => (
+                    <TableRow
+                      key={element.name}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        sx={{ width: "400px" }}
+                      >
+                        {element.name}
+                      </TableCell>
+                      <TableCell align="left" sx={{ width: "400px" }}>
+                        {element.count}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          )
+        ) : (
+          <Alert>{error}</Alert>
+        )}
+      </Box>
     </TableContainer>
   );
 };

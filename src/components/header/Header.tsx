@@ -13,7 +13,12 @@ interface IProps {
 const Header = ({ children, fontColor, bgrColor, iconSrc }: IProps) => {
   return (
     <Box
-      sx={{ display: "flex", position: "sticky", backgroundColor: bgrColor }}
+      sx={{
+        display: "flex",
+        position: "sticky",
+        backgroundColor: bgrColor,
+        width: "100vw",
+      }}
     >
       <Typography
         variant="h5"

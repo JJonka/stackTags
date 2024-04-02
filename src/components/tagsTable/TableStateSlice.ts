@@ -38,7 +38,8 @@ export const getTags = createAsyncThunk(
       const items: ITag[] = data["items"];
       return items;
     } catch (error) {
-      return console.log(error);
+      console.log(error);
+      return error;
     }
   }
 );
@@ -57,8 +58,8 @@ const GetTagsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getTags.rejected, (state, action) => {
-        (state.loading = false),
-          (state.error = action.error.message || "An error occurred");
+        (state.loading = false), (state.error = action.error.message || null);
+        console.log(state.error);
       });
   },
 });
