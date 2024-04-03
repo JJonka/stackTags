@@ -24,12 +24,15 @@ const Header = ({ children, fontColor, bgrColor, iconSrc }: IProps) => {
         variant="h5"
         color={fontColor}
         component="div"
-        className={styles.typography}
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "10px",
+          padding: "10px",
+        }}
       >
-        <ReactSVG
-          src={iconSrc}
-          className={styles[`logo-${fontColor}`]}
-        ></ReactSVG>
+        <ReactSVG src={iconSrc} className={styles.logo}></ReactSVG>
         {children}
       </Typography>
     </Box>
