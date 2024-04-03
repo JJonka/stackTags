@@ -27,13 +27,7 @@ const App = () => {
         gap: "15px",
       }}
     >
-      <Header
-        fontColor="white"
-        bgrColor="dodgerblue"
-        iconSrc="/assets/logo.svg"
-      >
-        STACKTAG - a Stack Overflow's tags browser
-      </Header>
+      <Header>STACKTAG - a Stack Overflow's tags browser</Header>
       <TagsTable></TagsTable>
     </Box>
   );
