@@ -9,6 +9,7 @@ import { render } from "@testing-library/react";
 import Box from "@mui/material/Box";
 import { ComponentProps } from "react";
 import GeneralTable from "./GeneralTableUI";
+import { SerializedError } from "@reduxjs/toolkit";
 
 vi.mock("@mui/material/Table", () => ({
   default: (props: ComponentProps<typeof Table>) => <div>{props.children}</div>,
@@ -127,7 +128,7 @@ describe("GeneralTable", () => {
     const { getByText } = render(
       <GeneralTable
         loading={false}
-        error={"Error occured"}
+        error={{} as SerializedError}
         headCells={["name", "count"]}
         sortCells={["name", "popular"]}
         currentArray={[{ name: "javascript", count: 10 }]}
