@@ -2,25 +2,27 @@
 
 ![Alt text](public/assets/screenshot.png)
 
+This application enables users to explore Stack Overflow tags and their total counts effortlessly. Users can sort tags by name or count in ascending or descending order using a dynamic table interface. Utilizing Redux, the app manages distinct states for loading and error handling. Storybook facilitates component documentation and testing, with Vitest and React Testing Library ensuring comprehensive testing coverage.
+
 ## 💻 Technologies
 
-### During ebsite is built with React, Typescript, HTML, CSS Modules, Vite and Vitest.
+### Application is built with: React, Typescript, Redux, HTML, CSS Modules, MUI, Vite, Vitest and React Testing Library.
 
 ## 🚀 Installation
 
-### After cloning repository to your local directory, install all dependencies:
+#### After cloning repository to your local directory, install all dependencies:
 
       npm ci
 
-### To run application use:
+#### To run application use:
 
       npm start
 
-### App is running on:
+#### App is running on:
 
       http://localhost:5173/
 
-### If you wish to check out app's Storybook use:
+#### If you wish to check out app's Storybook use:
 
       npm run storybook
 
