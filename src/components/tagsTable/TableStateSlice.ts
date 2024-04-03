@@ -39,7 +39,7 @@ export const getTags = createAsyncThunk(
     const items: ITag[] = data["items"];
 
     if (!response.ok) {
-      throw new Error();
+      throw new Error(data["error_message"]);
     }
     return items;
   }

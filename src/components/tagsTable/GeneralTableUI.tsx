@@ -10,6 +10,7 @@ import TablePagination from "@mui/material/TablePagination";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
+import { SerializedError } from "@reduxjs/toolkit";
 
 interface ITag {
   count: number;
@@ -32,7 +33,7 @@ interface IProps {
   headCells: string[];
   currentArray: ITag[];
   loading: boolean;
-  error: string | null;
+  error: SerializedError | null;
   page: number;
   rowsPerPage: number;
   orderBy: string;
@@ -135,7 +136,7 @@ const GeneralTableUI = ({
         </Box>
       )
     ) : (
-      <Alert severity="error">Error occured.</Alert>
+      <Alert severity="error">{error.message}</Alert>
     )}
   </TableContainer>
 );
