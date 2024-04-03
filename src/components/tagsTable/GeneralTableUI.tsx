@@ -65,76 +65,74 @@ const GeneralTableUI = ({
       justifyContent: "center",
     }}
   >
+    <TablePagination
+      component="div"
+      count={total ?? 100}
+      page={page}
+      onPageChange={handlers.handleChangePage}
+      rowsPerPage={rowsPerPage}
+      onRowsPerPageChange={handlers.handleChangeRowsPerPage}
+    />
     {error == null ? (
       loading ? (
         <CircularProgress sx={{ padding: "20px" }} />
       ) : (
-        <>
-          <TablePagination
-            component="div"
-            count={total ?? 100}
-            page={page}
-            onPageChange={handlers.handleChangePage}
-            rowsPerPage={rowsPerPage}
-            onRowsPerPageChange={handlers.handleChangeRowsPerPage}
-          />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "10px",
-            }}
-          >
-            <Table sx={{ maxWidth: 1000 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ width: "400px" }}>
-                    <TableSortLabel
-                      active={orderBy === headCells[0]}
-                      direction={
-                        orderBy === headCells[0] ? orderDirection : "asc"
-                      }
-                      onClick={() => handlers.sortHandler(sortCells[0])}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "10px",
+          }}
+        >
+          <Table sx={{ maxWidth: 1000 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ width: "400px" }}>
+                  <TableSortLabel
+                    active={orderBy === headCells[0]}
+                    direction={
+                      orderBy === headCells[0] ? orderDirection : "asc"
+                    }
+                    onClick={() => handlers.sortHandler(sortCells[0])}
+                  >
+                    {headCells[0].toUpperCase()}
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell align="left" sx={{ width: "400px" }}>
+                  <TableSortLabel
+                    active={orderBy === "popular"}
+                    direction={orderBy === "popular" ? orderDirection : "asc"}
+                    onClick={() => handlers.sortHandler(sortCells[1])}
+                  >
+                    {headCells[1].toUpperCase()}
+                  </TableSortLabel>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {currentArray &&
+                currentArray.map((element) => (
+                  <TableRow
+                    key={element.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      sx={{ width: "400px" }}
                     >
-                      {headCells[0].toUpperCase()}
-                    </TableSortLabel>
-                  </TableCell>
-                  <TableCell align="left" sx={{ width: "400px" }}>
-                    <TableSortLabel
-                      active={orderBy === "popular"}
-                      direction={orderBy === "popular" ? orderDirection : "asc"}
-                      onClick={() => handlers.sortHandler(sortCells[1])}
-                    >
-                      {headCells[1].toUpperCase()}
-                    </TableSortLabel>
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {currentArray &&
-                  currentArray.map((element) => (
-                    <TableRow
-                      key={element.name}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        sx={{ width: "400px" }}
-                      >
-                        {element.name}
-                      </TableCell>
-                      <TableCell align="left" sx={{ width: "400px" }}>
-                        {element.count}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </Box>
-        </>
+                      {element.name}
+                    </TableCell>
+                    <TableCell align="left" sx={{ width: "400px" }}>
+                      {element.count}
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </Box>
       )
     ) : (
       <Alert severity="error">Error occured.</Alert>

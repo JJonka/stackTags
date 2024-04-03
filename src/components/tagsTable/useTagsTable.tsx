@@ -1,3 +1,4 @@
+import { SerializedError } from "@reduxjs/toolkit";
 import { useAppDispatch, useTypedSelector } from "../../app/stateStore";
 import { getTags } from "./TableStateSlice";
 import { useEffect, useState } from "react";
@@ -35,8 +36,11 @@ const useTagsTable = () => {
     (state) => state.getTags.currentArray
   );
   const loading: boolean = useTypedSelector((state) => state.getTags.loading);
-  const error: string | null = useTypedSelector((state) => state.getTags.error);
+  const error: SerializedError | null = useTypedSelector(
+    (state) => state.getTags.error
+  );
 
+  console.log(error);
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number

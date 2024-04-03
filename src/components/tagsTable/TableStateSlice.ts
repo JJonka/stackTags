@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  SerializedError,
+  createAsyncThunk,
+  createSlice,
+} from "@reduxjs/toolkit";
 
 interface ITag {
   total: number;
@@ -9,7 +13,7 @@ interface ITag {
 interface InitialStateType {
   currentArray: ITag[] | [];
   loading: boolean;
-  error: string | null;
+  error: SerializedError | null;
 }
 
 const initialState: InitialStateType = {
@@ -33,6 +37,10 @@ export const getTags = createAsyncThunk(
     );
     const data = await response.json();
     const items: ITag[] = data["items"];
+
+    if (!response.ok) {
+      throw new Error();
+    }
     return items;
   }
 );
@@ -51,8 +59,8 @@ const GetTagsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getTags.rejected, (state, action) => {
-        (state.loading = false),
-          (state.error = action.error.message ?? "Error");
+        state.loading = false;
+        state.error = action.error;
       });
   },
 });
