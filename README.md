@@ -1,4 +1,4 @@
-# 🎇 STACKTAG INSIGHT - a Stack Overflow's tags browser
+# 🎇 STACKTAG - a Stack Overflow's tags browser
 
 ![Alt text](public/assets/screenshot.png)
 

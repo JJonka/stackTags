@@ -32,7 +32,7 @@ const App = () => {
         bgrColor="dodgerblue"
         iconSrc="/assets/logo.svg"
       >
-        STACKTAG INSIGHT - a Stack Overflow's tags browser
+        STACKTAG - a Stack Overflow's tags browser
       </Header>
       <TagsTable></TagsTable>
     </Box>
