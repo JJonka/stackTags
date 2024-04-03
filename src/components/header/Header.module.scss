@@ -1,49 +1,9 @@
-.typography {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  padding-left: 30px;
-}
-
-.logo-white {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5px;
+.logo {
   svg {
     width: 50px;
     height: 60px;
   }
   path {
     fill: white;
-  }
-}
-
-.logo-black {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5px;
-  svg {
-    width: 50px;
-    height: 60px;
-  }
-  path {
-    fill: black;
-  }
-}
-
-.logo-orange {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5px;
-  svg {
-    width: 50px;
-    height: 60px;
-  }
-  path {
-    fill: orange;
   }
 }

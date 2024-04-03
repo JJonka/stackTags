@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# 🎇 STACKTAG - a Stack Overflow's tags browser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Alt text](public/assets/screenshot.png)
 
-Currently, two official plugins are available:
+This application enables users to explore Stack Overflow tags and their total counts effortlessly. Users can sort tags by name or count in ascending or descending order using a dynamic table interface. Utilizing Redux, the app manages distinct states for loading and error handling. Storybook facilitates component documentation and testing, with Vitest and React Testing Library ensuring comprehensive testing coverage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💻 Technologies
 
-## Expanding the ESLint configuration
+### Application is built with: React, Typescript, Redux, HTML, CSS Modules, MUI, Vite, Vitest and React Testing Library.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Installation
 
-- Configure the top-level `parserOptions` property like this:
+#### After cloning repository to your local directory, install all dependencies:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+      npm ci
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### To run application use:
+
+      npm start
+
+#### App is running on:
+
+      http://localhost:5173/
+
+#### If you wish to check out app's Storybook use:
+
+      npm run storybook
+
+### To run tests use:
+
+      npm run test
