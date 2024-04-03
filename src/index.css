@@ -2,7 +2,8 @@ html {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-left: calc(100vw - 100%);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body {
@@ -10,4 +11,5 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }

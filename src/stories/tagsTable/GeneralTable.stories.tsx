@@ -21,6 +21,13 @@ const meta: Meta<typeof GeneralTable> = {
       control: false,
     },
   },
+  render: ({ ...args }) => (
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <GeneralTable {...args}></GeneralTable>
+    </div>
+  ),
 };
 
 export default meta;
@@ -39,7 +46,7 @@ export const PrimaryGeneralTable: Story = {
     orderDirection: "asc",
     total: 100,
     handlers: {
-      handleChangePage: (event, newPage) => newPage,
+      handleChangePage: (_event, newPage) => newPage,
       handleChangeRowsPerPage: (event) => event.target.value,
       sortHandler: (sortBy) => sortBy,
     },

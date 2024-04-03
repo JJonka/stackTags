@@ -81,7 +81,7 @@ describe("GeneralTable", () => {
         orderDirection={"asc"}
         total={100}
         handlers={{
-          handleChangePage: (event, newPage) => newPage,
+          handleChangePage: (newPage) => newPage,
           handleChangeRowsPerPage: (event) => event.target.value,
           sortHandler: (sortBy) => sortBy,
         }}
@@ -111,7 +111,7 @@ describe("GeneralTable", () => {
         orderDirection={"asc"}
         total={100}
         handlers={{
-          handleChangePage: (event, newPage) => newPage,
+          handleChangePage: (_event, newPage) => newPage,
           handleChangeRowsPerPage: (event) => event.target.value,
           sortHandler: (sortBy) => sortBy,
         }}
@@ -137,7 +137,7 @@ describe("GeneralTable", () => {
         orderDirection={"asc"}
         total={100}
         handlers={{
-          handleChangePage: (event, newPage) => newPage,
+          handleChangePage: (_event, newPage) => newPage,
           handleChangeRowsPerPage: (event) => event.target.value,
           sortHandler: (sortBy) => sortBy,
         }}

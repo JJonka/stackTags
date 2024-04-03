@@ -38,7 +38,7 @@ const useTagsTable = () => {
   const error: string | null = useTypedSelector((state) => state.getTags.error);
 
   const handleChangePage = (
-    event: React.MouseEvent<HTMLButtonElement> | null,
+    _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
     dispatch(

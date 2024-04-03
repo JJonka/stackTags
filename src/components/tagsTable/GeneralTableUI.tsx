@@ -58,7 +58,7 @@ const GeneralTableUI = ({
     component={Paper}
     sx={{
       width: 800,
-      minHeight: "100px",
+      minHeight: "150px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",

@@ -30,6 +30,7 @@ const Header = ({ children, fontColor, bgrColor, iconSrc }: IProps) => {
           alignItems: "center",
           gap: "10px",
           padding: "10px",
+          marginLeft: "20px",
         }}
       >
         <ReactSVG src={iconSrc} className={styles.logo}></ReactSVG>
