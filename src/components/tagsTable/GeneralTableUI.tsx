@@ -17,6 +17,8 @@ interface ITag {
   name: string;
 }
 
+export type SortBy = "name" | "popular";
+
 interface IHandlers {
   handleChangePage: (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -25,18 +27,18 @@ interface IHandlers {
   handleChangeRowsPerPage: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
-  sortHandler: (sortBy: string) => void;
+  sortHandler: (sortBy: SortBy) => void;
 }
 
 interface IProps {
-  sortCells: string[];
+  sortCells: Array<SortBy>;
   headCells: string[];
   currentArray: ITag[];
   loading: boolean;
   error: SerializedError | null;
   page: number;
   rowsPerPage: number;
-  orderBy: string;
+  orderBy: SortBy;
   orderDirection: "asc" | "desc";
   total: number;
   handlers: IHandlers;
@@ -76,7 +78,7 @@ const GeneralTableUI = ({
     />
     {error == null ? (
       loading ? (
-        <CircularProgress sx={{ padding: "20px" }} />
+        <CircularProgress sx={{ padding: "10px" }} />
       ) : (
         <Box
           sx={{
@@ -116,7 +118,7 @@ const GeneralTableUI = ({
               {currentArray &&
                 currentArray.map((element) => (
                   <TableRow
-                    key={element.name}
+                    key={Math.random()}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell

@@ -40,7 +40,6 @@ const useTagsTable = () => {
     (state) => state.getTags.error
   );
 
-  console.log(error);
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
